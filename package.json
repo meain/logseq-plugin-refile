@@ -13,7 +13,7 @@
   "author": "Abin Simon",
   "license": "Apache-2.0",
   "dependencies": {
-    "@logseq/libs": "0.0.1-alpha.34"
+    "@logseq/libs": "^0.0.15"
   },
   "logseq": {
     "id": "logseq-plugin-refile",
