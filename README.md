@@ -1,15 +1,26 @@
 ![Plugin Icon](./icon.png)
 
-# Logseq Backlog
+# Logseq Refile
 
-A LogSeq plugin to manage your backlogs.
+A LogSeq plugin to refile items in your graph.
 
-This is mostly specific to my workflow where I maintain a page `Backlog/...` for each project and from time to time (usually once a week) I go through the backlog and move items to `Backlog/.../Complete` page. This plugin provides a single slash command `/Refile Backlog` to move all the completed items to corresponding the `Backlog/.../Complete` page.
+The plugin provides two commands.
+
+- `Refile Completed`: Refile all the items with `DONE` or `CANCELED` marker
+- `Refile Item`: Refile the current item
+
+By default, the location to which items are refiled to is `<page-name>/Complete`, but you can change that by adding a page properly `REFILE-LOCATION` with the name of the page to which you want to refile it to.
+
+## Example usecase
+
+I primarily see two usecases for this:
+
+1) Refilling completed items from a backlog as shown in the video below
 
 [logseq-plugin-backlog.webm](https://github.com/meain/logseq-plugin-backlog/assets/14259816/81d06c60-6fd7-470b-8e7d-9781cf78ac01)
 
-*Ideally I would have done this outside of logseq with soething like [this bash script](https://github.com/meain/dotfiles/blob/7c0f85ba00c423af6a3ffe8554a340490828776c/scripts/.local/bin/random/%2Clogseq-refile), but the references to a moved item somewhere else in the graph breaks (similar to cutting and pasting a block). This is done to avoid that. [Related issue](https://discuss.logseq.com/t/move-block-to-another-page/6276).*
+2) Managing lists like `to/watch` where to add in movies, series, books etc and refile them once complete to another page.
 
 --- 
 
-<a target="_blank" href="https://icons8.com/icon/114426/todo-list">Todo List</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+<a target="_blank" href="https://icons8.com/icon/oYMsYqgWfi9G/filing-cabinet">Filing Cabinet</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
