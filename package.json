@@ -1,7 +1,7 @@
 {
-  "name": "logseq-plugin-backlog",
+  "name": "logseq-plugin-refile",
   "version": "0.1.0",
-  "description": "Logseq plugin to manage backlogs",
+  "description": "Logseq plugin to refile blocks",
   "main": "dist/index.html",
   "targets": {
     "main": false
@@ -16,8 +16,8 @@
     "@logseq/libs": "0.0.1-alpha.34"
   },
   "logseq": {
-    "id": "logseq-plugin-backlog",
-    "title": "Backlog",
+    "id": "logseq-plugin-refile",
+    "title": "Refile",
     "icon": "./icon.png"
   },
   "devDependencies": {

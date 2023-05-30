@@ -8,11 +8,17 @@ export const getLastBlock = async function (pageName) {
   return blocks[blocks.length - 1];
 };
 
-async function refileBacklog(e) {
-  console.log("Refiling backlogs");
+async function getRefileLocation(page) {
+  let targetPage = page.properties?.refileLocation;
+  if (!targetPage) targetPage = page.originalName + "/Complete";
+  return targetPage;
+}
+
+async function refileCompleted(e) {
+  console.log("Refiling completed");
 
   const page = await window.logseq.Editor.getCurrentPage();
-  const targetPage = page.originalName + "/Complete";
+  const targetPage = getRefileLocation(page);
 
   const blocks = await window.logseq.Editor.getCurrentPageBlocksTree();
   const atBlock = await getLastBlock(targetPage);
@@ -24,12 +30,14 @@ async function refileBacklog(e) {
     }
   });
 
-  logseq.App.showMsg("Refiled all completed items to " + targetPage);
+  logseq.UI.showMsg("Refiled all completed items to " + targetPage);
 }
 
 const main = async () => {
-  console.log("plugin loaded");
-  logseq.Editor.registerSlashCommand("Refile Backlog", async (e) => {refileBacklog(e);});
+  console.log("Refile plugin loaded");
+  logseq.Editor.registerSlashCommand("Refile Completed", async (e) => {
+    refileCompleted(e);
+  });
 };
 
 logseq.ready(main).catch(console.error);
