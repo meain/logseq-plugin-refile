@@ -10,6 +10,13 @@ export const getLastBlock = async function (pageName) {
   return blocks[blocks.length - 1];
 };
 
+// This is necessary instead of getCurrentPage as it does not work for journals
+async function getCurrentPage() {
+  const block = await window.logseq.Editor.getCurrentBlock();
+  const page = await window.logseq.Editor.getPage(block.page.id);
+  return page;
+}
+
 function getRefileLocation(page) {
   let targetPage = page.properties?.refileLocation;
   if (!targetPage) targetPage = page.originalName + "/Complete";
@@ -19,10 +26,10 @@ function getRefileLocation(page) {
 async function refileCompleted(e) {
   console.log("Refiling completed");
 
-  const page = await window.logseq.Editor.getCurrentPage();
+  const page = await getCurrentPage();
   const targetPage = getRefileLocation(page);
 
-  const blocks = await window.logseq.Editor.getCurrentPageBlocksTree();
+  const blocks = await window.logseq.Editor.getPageBlocksTree(page.originalName);
   const atBlock = await getLastBlock(targetPage);
 
   blocks.forEach((block) => {
@@ -38,7 +45,7 @@ async function refileCompleted(e) {
 async function refileItem(e) {
   console.log("Refiling item");
 
-  const page = await window.logseq.Editor.getCurrentPage();
+  const page = await getCurrentPage();
   const targetPage = getRefileLocation(page);
 
   const block = await window.logseq.Editor.getCurrentBlock();
