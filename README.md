@@ -6,7 +6,7 @@ A LogSeq plugin to refile items in your graph.
 
 The plugin provides two commands.
 
-- `Refile Completed`: Refile all the items with `DONE` or `CANCELED` marker
+- `Refile Completed`: Refile all the top level items with `DONE` or `CANCELED` marker
 - `Refile Item`: Refile the current item
 
 By default, the location to which items are refiled to is `<page-name>/Complete`, but you can change that by adding a page properly `REFILE-LOCATION` with the name of the page to which you want to refile it to.
