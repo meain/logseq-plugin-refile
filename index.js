@@ -30,6 +30,7 @@ async function refileCompleted(e) {
   const targetPage = getRefileLocation(page);
 
   const blocks = await window.logseq.Editor.getPageBlocksTree(page.originalName);
+
   const atBlock = await getLastBlock(targetPage);
 
   blocks.forEach((block) => {
@@ -65,6 +66,30 @@ const main = async () => {
 
   logseq.Editor.registerSlashCommand("Refile Item", async (e) => {
     refileItem(e);
+  });
+
+  logseq.App.registerCommandPalette({
+    key:"refile-item",
+    label: "Refile Item",
+    keybinding:{
+      mode: "global",
+      binding: logseq.settings.keyboard || "r i",
+    }
+  },
+    async (e) => {
+    refileItem(e);
+  });
+
+  logseq.App.registerCommandPalette({
+    key:"refile-completed",
+    label: "Refile Completed",
+    keybinding:{
+      mode: "global",
+      binding: logseq.settings.keyboard || "r c",
+    }
+  },
+    async (e) => {
+    refileCompleted(e);
   });
 };
 
